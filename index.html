@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LDM26 Security Handbook</title>
+<title>LDM26 Event Handbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
@@ -36,9 +36,9 @@ h2{font-size:1.35rem;text-transform:uppercase;line-height:1.1}
 .sub{color:var(--muted);margin:0;font-size:.95rem}
 .radiobox{display:flex;flex-direction:column;gap:8px}
 .rlabel{font-family:var(--body);font-weight:700;font-size:.8rem;letter-spacing:.1em;color:var(--muted)}
-.radio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.radio{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .radio div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}
-.radio b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1}
+.radio b{display:block;font-family:var(--display);font-weight:400;font-size:1.25rem;white-space:nowrap;line-height:1}
 .radio span{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 .radio .em b{color:var(--red)}
 .links{display:flex;flex-direction:column;gap:10px}
@@ -93,7 +93,7 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-di
 <div class="wrap">
   <header class="hero">
     <div class="plate"><img src="logo.png" alt="Lucky Dumpling Market"></div>
-    <h1>Security &amp; Crowd Control Handbook</h1>
+    <h1>Event Handbook</h1>
     <p class="sub">Elder Park / Tarntanya Wama &middot; 9 Oct - 1 Nov 2026 &middot; Closed Mondays</p>
   </header>
 
@@ -102,7 +102,8 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-di
     <div class="radio">
       <div class="em"><b>Ch 1</b><span>Emergency</span></div>
       <div><b>Ch 2</b><span>Security</span></div>
-      <div><b>Ch 3</b><span>Operations</span></div>
+      <div><b>Ch 3</b><span>Ops &amp; Medical</span></div>
+      <div><b>Ch 6 / 9</b><span>Bars</span></div>
     </div>
   </section>
 
@@ -111,9 +112,13 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-di
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
       <span class="t"><strong>Site Induction</strong><small>Complete online before your first shift</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
     </a>
-    <a class="card" id="secIncident" style="--c:var(--orange)" href="#" target="_blank" rel="noopener">
-      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v5M12 16.5v.5"/></svg></span>
-      <span class="t"><strong>Security Incident Report</strong><small id="secIncidentNote">Any incident on shift - ejections, use of force, assault, theft, property damage, injury. Log before end of shift</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    <a class="card" style="--c:var(--orange)" href="https://tinyurl.com/incidentreportgluttony26" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg></span>
+      <span class="t"><strong>Incident &amp; Hazard Report</strong><small>Injury, illness, property damage, near miss or hazard - report as soon as it happens</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="card" style="--c:var(--pink)" href="https://forms.office.com/Pages/ResponsePage.aspx?id=1T6XwwGws0G5V0V0zs9wo9ioROzKiXdDjQtCp8BsdlpUREZBSk5QOEQxQjRZTDFQS1M1SVBRVDgyRS4u&amp;origin=QRCode" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+      <span class="t"><strong>Bullying &amp; Harassment Report</strong><small>Confidential form for bullying, harassment or inappropriate behaviour</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
     </a>
     <a class="card" style="--c:var(--blue)" href="emergency-map.jpg" target="_blank" rel="noopener">
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M10 21v-5h4v5"/></svg></span>
@@ -146,8 +151,6 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-di
     <ul class="contacts">
       <li><span class="who"><b>Emergency services</b><span>Police, ambulance, fire</span></span><span class="num"><a class="urgent" href="tel:000">000</a></span></li>
       <li><span class="who"><b>Event / Site phone</b><span>Operations Manager on shift is Chief Warden</span></span><span class="num"><a href="tel:0448158192">0448 158 192</a><button class="copy" type="button" data-n="0448 158 192">Copy</button></span></li>
-      <li><span class="who"><b>Lima One Security Manager</b><span>Glenn Roebuck</span></span><span class="num"><a href="tel:0457025256">0457 025 256</a><button class="copy" type="button" data-n="0457 025 256">Copy</button></span></li>
-      <li><span class="who"><b>Lima One Site Supervisor</b><span>On site</span></span><span class="num"><a href="tel:0408848311">0408 848 311</a><button class="copy" type="button" data-n="0408 848 311">Copy</button></span></li>
     </ul>
     <p class="note">On site, use radio first. Ops Managers and the Bar RP are on Channel 3.</p>
   </section>
@@ -215,13 +218,7 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-di
 </div>
 
 <script>
-// Paste the Work Metrics security incident form link between the quotes when it's ready.
-var SECURITY_INCIDENT_URL = "https://www.incidentreport.com.au/incidentmanage/form.php?frm=j4ob5xinrh";
 (function(){
-  var c=document.getElementById('secIncident');
-  if(SECURITY_INCIDENT_URL){c.href=SECURITY_INCIDENT_URL;}
-  else{c.classList.add('off');c.removeAttribute('href');c.setAttribute('aria-disabled','true');
-    document.getElementById('secIncidentNote').textContent='Link coming soon';}
   document.querySelectorAll('.copy').forEach(function(b){
     b.addEventListener('click',function(){
       var n=b.getAttribute('data-n');
