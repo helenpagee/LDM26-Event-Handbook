@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LDM26 Security Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: one phone-width column - logo plate, radio strip, five lantern-coloured link cards, then shift reference panels */
+:root{
+  --bg:#f6f4f1; --surface:#ffffff; --fg:#17181c; --muted:#5d5f68; --line:#e2dfda;
+  --red:#d9352a; --orange:#e98a0c; --blue:#1689c4; --pink:#d4006f; --green:#2f9a3a;
+  --on-accent:#ffffff; --plate:#ffffff;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121317; --surface:#1c1d23; --fg:#f1f0ee; --muted:#a4a6b0; --line:#2c2e36;
+  --red:#e8493d; --orange:#f39a1d; --blue:#2a9ad6; --pink:#e01a80; --green:#3aa846;
+  --on-accent:#ffffff; --plate:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121317; --surface:#1c1d23; --fg:#f1f0ee; --muted:#a4a6b0; --line:#2c2e36;
+  --red:#e8493d; --orange:#f39a1d; --blue:#2a9ad6; --pink:#e01a80; --green:#3aa846;
+  --on-accent:#ffffff; --plate:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
+.wrap{max-width:520px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:.02em;text-wrap:balance;margin:0}
+h1{font-size:2.1rem;line-height:1.05;text-transform:uppercase}
+h2{font-size:1.35rem;text-transform:uppercase;line-height:1.1}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.plate{background:var(--plate);border-radius:18px;padding:14px 22px;width:min(260px,70%)}
+.plate img{display:block;width:100%;height:auto}
+.sub{color:var(--muted);margin:0;font-size:.95rem}
+.radiobox{display:flex;flex-direction:column;gap:8px}
+.rlabel{font-family:var(--body);font-weight:700;font-size:.8rem;letter-spacing:.1em;color:var(--muted)}
+.radio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.radio div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}
+.radio b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1}
+.radio span{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.radio .em b{color:var(--red)}
+.links{display:flex;flex-direction:column;gap:10px}
+.card{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:var(--c);color:var(--on-accent);text-decoration:none;min-height:84px}
+.card:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.card:active{transform:scale(.99)}
+.ico{flex:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.2);display:grid;place-items:center}
+.ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card .t{min-width:0;flex:1}
+.card strong{display:block;font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+.card small{display:block;font-size:.9rem;opacity:.95;margin-top:3px}
+.card .go{flex:none;font-size:1.4rem;opacity:.85}
+.card.off{opacity:.55;pointer-events:none}
+.docs{display:flex;flex-direction:column;gap:8px}
+.docs h2{margin-bottom:2px}
+.doc{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg);text-decoration:none}
+.doc:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.dico{flex:none;width:40px;height:40px;border-radius:10px;background:var(--pink);color:var(--on-accent);display:grid;place-items:center}
+.dico svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.doc strong{display:block;font-weight:700;font-size:1rem}
+.doc small{display:block;font-size:.85rem;color:var(--muted)}
+.doc .go{color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.panel p{margin:0}
+.note{font-size:.85rem;color:var(--muted)}
+.contacts{display:flex;flex-direction:column;gap:8px;list-style:none;margin:0;padding:0}
+.contacts li{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px;flex-wrap:wrap}
+.contacts li:first-child{border-top:0;padding-top:0}
+.contacts .who{min-width:0}
+.contacts .who b{display:block}
+.contacts .who span{font-size:.85rem;color:var(--muted)}
+.num{display:flex;align-items:center;gap:6px}
+.num a{font-variant-numeric:tabular-nums;font-weight:700;color:var(--fg);text-decoration:none;user-select:all;white-space:nowrap}
+.num a.urgent{color:var(--red)}
+.copy{font:inherit;font-size:.75rem;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;padding:4px 8px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--fg)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:7px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:0}
+td:last-child{text-align:right;font-weight:700}
+.codes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.code{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.sw{flex:none;width:18px;height:18px;border-radius:5px;border:1px solid var(--line)}
+ul.rules{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+ul.rules li::marker{color:var(--muted)}
+footer{text-align:center;font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+@media (prefers-reduced-motion:reduce){.card:active{transform:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="plate"><img src="logo.png" alt="Lucky Dumpling Market"></div>
+    <h1>Security &amp; Crowd Control Handbook</h1>
+    <p class="sub">Elder Park / Tarntanya Wama &middot; 9 Oct - 1 Nov 2026 &middot; Closed Mondays</p>
+  </header>
+
+  <section class="radiobox" aria-labelledby="h-radio">
+    <h2 id="h-radio" class="rlabel">Radio channels</h2>
+    <div class="radio">
+      <div class="em"><b>Ch 1</b><span>Emergency</span></div>
+      <div><b>Ch 2</b><span>Security</span></div>
+      <div><b>Ch 3</b><span>Operations</span></div>
+    </div>
+  </section>
+
+  <nav class="links" aria-label="Quick links">
+    <a class="card" style="--c:var(--red)" href="https://www.onlineinduction.com/gluttonyevents/index.php" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+      <span class="t"><strong>Site Induction</strong><small>Complete online before your first shift</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="card" id="secIncident" style="--c:var(--orange)" href="#" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v5M12 16.5v.5"/></svg></span>
+      <span class="t"><strong>Security Incident Report</strong><small id="secIncidentNote">Any incident on shift - ejections, use of force, assault, theft, property damage, injury. Log before end of shift</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="card" style="--c:var(--blue)" href="emergency-map.jpg" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M10 21v-5h4v5"/></svg></span>
+      <span class="t"><strong>Emergency Map</strong><small>Emergency exits, EV access, extinguishers - pinch to zoom</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="card" style="--c:var(--green)" href="site-map.jpg" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+      <span class="t"><strong>Site Map</strong><small>Gates A-E, bars, stalls, toilets, info booth - pinch to zoom</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+  </nav>
+
+  <section class="docs" aria-labelledby="h-docs">
+    <h2 id="h-docs">Event documents</h2>
+    <a class="doc" href="https://gluttony.sharepoint.com/:f:/s/gluttonycommunity/IgCp5UNqDe65RZHAxRsH61NSAarF5iDkZu7-glSsNEkcXvk?e=4deLOs" target="_blank" rel="noopener">
+      <span class="dico"><svg viewBox="0 0 24 24"><path d="M4 4h11l5 5v11H4z"/><path d="M14 4v6h6M8 14h8M8 17h5"/></svg></span>
+      <span class="t"><strong>Event Operations Manual</strong><small>Site operations, security and crowd control, lost property</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="doc" href="https://gluttony.sharepoint.com/:f:/s/gluttonycommunity/IgCHVNrI2DJYTbqBTaOsSdYQARvd-dkXaNrIMoTyVI1UeBg?e=vlCeU6" target="_blank" rel="noopener">
+      <span class="dico"><svg viewBox="0 0 24 24"><path d="M4 4h11l5 5v11H4z"/><path d="M14 4v6h6M12 12v3M12 17.5v.5"/></svg></span>
+      <span class="t"><strong>Emergency Management Plan</strong><small>Wardens, evacuation, emergency codes and procedures</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+    <a class="doc" href="https://gluttony.sharepoint.com/:f:/s/gluttonycommunity/IgBInbs4RK93R6CLll4XEJJNAdprsSMMHKkmQkY-XnjEhtA?e=RtljIp" target="_blank" rel="noopener">
+      <span class="dico"><svg viewBox="0 0 24 24"><path d="M4 4h11l5 5v11H4z"/><path d="M14 4v6h6"/><circle cx="12" cy="15" r="2.5"/></svg></span>
+      <span class="t"><strong>Short Term Licence</strong><small>Licence 226624 and the licensee risk management plan</small></span><span class="go" aria-hidden="true">&rsaquo;</span>
+    </a>
+  </section>
+
+  <section class="panel" aria-labelledby="h-contacts">
+    <h2 id="h-contacts">Contacts</h2>
+    <ul class="contacts">
+      <li><span class="who"><b>Emergency services</b><span>Police, ambulance, fire</span></span><span class="num"><a class="urgent" href="tel:000">000</a></span></li>
+      <li><span class="who"><b>Event / Site phone</b><span>Operations Manager on shift is Chief Warden</span></span><span class="num"><a href="tel:0448158192">0448 158 192</a><button class="copy" type="button" data-n="0448 158 192">Copy</button></span></li>
+      <li><span class="who"><b>Lima One Security Manager</b><span>Glenn Roebuck</span></span><span class="num"><a href="tel:0457025256">0457 025 256</a><button class="copy" type="button" data-n="0457 025 256">Copy</button></span></li>
+      <li><span class="who"><b>Lima One Site Supervisor</b><span>On site</span></span><span class="num"><a href="tel:0408848311">0408 848 311</a><button class="copy" type="button" data-n="0408 848 311">Copy</button></span></li>
+    </ul>
+    <p class="note">On site, use radio first. Ops Managers and the Bar RP are on Channel 3.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-hours">
+    <h2 id="h-hours">Licensed hours</h2>
+    <table>
+      <tr><td>Tue - Thu</td><td>4:30pm - 1:00am</td></tr>
+      <tr><td>Fri &amp; Sat</td><td>12:00pm - 2:00am</td></tr>
+      <tr><td>Sun</td><td>12:00pm - 1:00am</td></tr>
+      <tr><td>Mon</td><td>Closed</td></tr>
+    </table>
+    <p class="note">Last drinks are 30 minutes before close: 12:30am on 1am nights, 1:30am on 2am nights. Closing times are often earlier than the licensed hours. Check with Ops on shift.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-codes">
+    <h2 id="h-codes">Radio colour codes</h2>
+    <div class="codes">
+      <span class="code"><span class="sw" style="background:#1e7fd0"></span>Blue - Medical</span>
+      <span class="code"><span class="sw" style="background:#d9352a"></span>Red - Fire / smoke</span>
+      <span class="code"><span class="sw" style="background:#f07c12"></span>Orange - Evacuation</span>
+      <span class="code"><span class="sw" style="background:#7b3fa8"></span>Purple - Bomb threat</span>
+      <span class="code"><span class="sw" style="background:#111111"></span>Black - Personal threat</span>
+      <span class="code"><span class="sw" style="background:#e64a9b"></span>Pink - Lost / found person</span>
+      <span class="code"><span class="sw" style="background:#7a5230"></span>Brown - External</span>
+      <span class="code"><span class="sw" style="background:#f2c418"></span>Yellow - Other internal</span>
+    </div>
+    <p class="note">If emergency traffic starts, stop all other radio use. Bomb threat: no radio transmissions near a suspect item.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-licence">
+    <h2 id="h-licence">Licence conditions (226624)</h2>
+    <ul class="rules">
+      <li>Capacity 6,000. Monitor gate counters and report numbers to Ops.</li>
+      <li>Security ratio 1 per 500 patrons from opening.</li>
+      <li>Condition 9: &ldquo;No more than 1 (one) open wine bottle and no more than 2 (two) open bottles of 375ml Soju or 4 (four) alcoholic beverage(s) can be sold or supplied to a person at any one time. From 9:00pm no more than 2 (two) alcoholic beverage(s) and 1 (one) open bottle of Soju 375ml can be sold or supplied to a person at any one time. Sale of wine bottles and bottles of 375ml Soju are to cease at 11:00pm. All other liquor sales are to cease 30 minutes prior to close.&rdquo;</li>
+      <li>No alcohol brought in or taken out of the site.</li>
+      <li>Refuse entry or remove anyone wearing declared criminal organisation colours, jewellery or tattoos. Call SAPOL if safety is at risk.</li>
+      <li>Minors after 12:00am must be with a responsible adult.</li>
+    </ul>
+  </section>
+
+  <section class="panel" aria-labelledby="h-banned">
+    <h2 id="h-banned">Banned items</h2>
+    <p>Weapons of any kind including knives, fireworks and flares, fire twirling gear, laser lights, drones, alcohol, illegal items, declared criminal organisation colours or emblems.</p>
+    <p class="note">No routine bag checks. Check only if there's a concern about a suspicious package or alcohol (e.g. an esky). No metal detectors.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-pink">
+    <h2 id="h-pink">Code Pink - lost or found person</h2>
+    <ul class="rules">
+      <li>Radio "Code Pink Lost" or "Code Pink Found" with approximate age and description.</li>
+      <li>Stay with the person or the reporting guardian.</li>
+      <li>Found person: stay where they were found for 15 minutes before moving them.</li>
+      <li>Never escort a child alone. A security guard must always be present.</li>
+      <li>Offer water only, no food.</li>
+      <li>Check and record photo ID before handing over to a guardian.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Lucky Dumpling Market 2026 &middot; Gluttony Food &amp; Wine Festival</span>
+    <span>Trouble opening a link? Copy it and paste into any browser.</span>
+  </footer>
+</div>
+
+<script>
+// Paste the Work Metrics security incident form link between the quotes when it's ready.
+var SECURITY_INCIDENT_URL = "https://www.incidentreport.com.au/incidentmanage/form.php?frm=j4ob5xinrh";
+(function(){
+  var c=document.getElementById('secIncident');
+  if(SECURITY_INCIDENT_URL){c.href=SECURITY_INCIDENT_URL;}
+  else{c.classList.add('off');c.removeAttribute('href');c.setAttribute('aria-disabled','true');
+    document.getElementById('secIncidentNote').textContent='Link coming soon';}
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.getAttribute('data-n');
+      var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+      try{navigator.clipboard.writeText(n).then(done,function(){sel(b)});}catch(e){sel(b)}
+    });
+  });
+  function sel(b){var a=b.previousElementSibling;var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+})();
+</script>
+</body>
+</html>
